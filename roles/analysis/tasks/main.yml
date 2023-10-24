@@ -1,0 +1,17 @@
+---
+# tasks file for analysis
+- name: /etc/ansible/facts.d directory exists
+  ansible.builtin.file:
+    path: /etc/ansible/facts.d
+    state: directory
+    mode: '0755'
+    owner: root
+    group: root
+
+- name: Capture current ansible_facts for validation after upgrade
+  ansible.builtin.copy:
+    content: "{{ ansible_facts | ansible.builtin.combine({'ansible_local': {}}) }}"
+    dest: /etc/ansible/facts.d/pre_ripu.fact
+    mode: '0644'
+    owner: root
+    group: root
