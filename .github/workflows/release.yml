@@ -10,9 +10,9 @@ on:
 
 jobs:
   pre-commit:
-    uses: redhat-cop/infra.leapp/.github/workflows/pre-commit.yml@main
+    uses: redhat-cop/infra.convert2rhel/.github/workflows/pre-commit.yml@main
   sanity:
-    uses: redhat-cop/infra.leapp/.github/workflows/ansible-test.yml@main
+    uses: redhat-cop/infra.convert2rhel/.github/workflows/ansible-test.yml@main
   prechecks:
     needs:
       - pre-commit
@@ -55,7 +55,7 @@ jobs:
         id: vers
 
       - name: Install collection
-        run: ansible-galaxy collection install ./infra-leapp-${{ steps.vers.outputs.NUM }}.tar.gz -p /home/runner/collections
+        run: ansible-galaxy collection install ./infra-convert2rhel-${{ steps.vers.outputs.NUM }}.tar.gz -p /home/runner/collections
         shell: bash
         working-directory: ${{ vars.GITHUB_PATH }}
 
