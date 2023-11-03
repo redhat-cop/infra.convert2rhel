@@ -27,5 +27,5 @@
   tasks:
     - name: Perform OS conversion
       ansible.builtin.import_role:
-        name: infra.conver2rhel.convert
+        name: infra.convert2rhel.convert
 ...
