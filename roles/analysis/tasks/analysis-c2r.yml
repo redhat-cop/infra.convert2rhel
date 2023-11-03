@@ -1,0 +1,40 @@
+---
+# TODO: Install convert2rhel for different OS?
+- name: Install packages for pre-conversion analysis on CentOS 7
+  ansible.builtin.package:
+    name: "{{ analysis_packages_centos7 }}"
+    # enablerepo: "{{ analysis_repos_centos7 }}" TODO?
+    state: latest
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version|int == 7
+
+- name: Ensure convert2rhel log directory exists
+  ansible.builtin.file:
+    path: /var/log/convert2rhel
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Convert2RHEL pre-analysis report
+  ansible.builtin.shell: >
+    export PATH={{ os_path }}
+    set -o pipefail;
+    convert2rhel analyze
+    {{ convert2rhel_preconv_opts }}
+    {{ convert2rhel_enable_repos_args }}
+    2>&1 | tee -a {{ log_file }}
+  register: convert2rhel
+  args:
+    executable: /bin/bash
+  async: "{{ async_timeout_maximum | int }}"
+  poll: "{{ async_poll_interval | int }}"
+  failed_when: "'Pre-conversion analysis report' not in convert2rhel.stdout"
+
+- name: Include check-results-file.yml
+  ansible.builtin.include_tasks: check-results-file.yml
+
+- name: Include the parse_c2r_report role to check if conversion inhibited
+  ansible.builtin.include_role:
+    name: infra.convert2rhel.parse_c2r_report
+
+...
