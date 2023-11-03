@@ -1,0 +1,34 @@
+---
+- name: Default conversion_inhibited to false
+  ansible.builtin.set_fact:
+    conversion_inhibited: false
+
+- name: Collect human readable report results
+  ansible.builtin.slurp:
+    src: "{{ result_filename }}"
+  register: results_txt
+
+- name: Collect JSON report results
+  ansible.builtin.slurp:
+    src: "{{ result_filename_json }}"
+  register: results_json
+
+- name: Parse report results
+  ansible.builtin.set_fact:
+    convert2rhel_report_txt: "{{ results_txt.content | b64decode | split('\n') }}"
+    convert2rhel_report_json: "{{ results_json.content | b64decode | from_json }}"
+
+- name: Check for SKIP, OVERRIDABLE, ERROR statuses
+  ansible.builtin.set_fact:
+    conversion_inhibited: true
+  when:
+      # All of these are unnaceptable based on https://github.com/oamg/convert2rhel-worker-scripts/blob/main/scripts/preconversion_assessment_script.py#L121
+    - "'SKIP' == item.result.level or 'SKIP' in item.msg_levels"
+    - "'OVERRIDABLE' == item.result.level or 'OVERRIDABLE' in item.msg_levels"
+    - "'ERROR' == item.result.level or 'ERROR' in item.msg_levels"
+
+  loop: "{{ report_actions }}"
+  vars:
+    report_actions: "{{ convert2rhel_report_json.actions | map('combine', {'msg_levels': item.messages | map(attribute='level')}) | convert2rhel_report_json.actions }}"
+
+...
