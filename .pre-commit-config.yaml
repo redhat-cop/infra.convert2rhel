@@ -6,7 +6,7 @@ repos:
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: 'https://github.com/ansible-community/ansible-lint.git'
-    rev: v6.14.2
+    rev: v6.21.1
     hooks:
       - id: ansible-lint
         pass_filenames: false
@@ -16,6 +16,6 @@ repos:
           - "--profile=production"
           - "-c=.ansible-lint.yml"
         additional_dependencies:
-          - "ansible-core>=2.13"
+          - "ansible-core>=2.14"
           - "yamllint>=1.29,<2.0"
 ...

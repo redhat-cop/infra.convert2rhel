@@ -4,7 +4,7 @@
   ansible.builtin.file:
     path: /etc/ansible/facts.d
     state: directory
-    mode: '0755'
+    mode: "0755"
     owner: root
     group: root
 
@@ -12,6 +12,7 @@
   ansible.builtin.copy:
     content: "{{ ansible_facts | ansible.builtin.combine({'ansible_local': {}}) }}"
     dest: /etc/ansible/facts.d/pre_ripu.fact
-    mode: '0644'
+    mode: "0644"
     owner: root
     group: root
+...

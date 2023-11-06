@@ -5,10 +5,10 @@
   become: true
   force_handlers: true
   vars:
-    rhsm_username: 'MY_USERNAME'
-    rhsm_password: 'MY_PASSWORD'
-    rhsm_org: 'MY_ORG'
-    rhsm_activation_key: 'MY_ACTIVATION_KEY'
+    rhsm_username: MY_USERNAME
+    rhsm_password: MY_PASSWORD
+    rhsm_org: MY_ORG
+    rhsm_activation_key: MY_ACTIVATION_KEY
     convert2rhel_configfile: |
       # -*- coding: utf-8 -*-
       # This file should be in mode 0600
@@ -27,5 +27,5 @@
   tasks:
     - name: Perform OS conversion
       ansible.builtin.import_role:
-        name: infra.conver2rhel.convert
+        name: infra.convert2rhel.convert
 ...
