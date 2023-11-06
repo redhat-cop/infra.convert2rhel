@@ -1,0 +1,16 @@
+---
+# defaults file for common
+
+centos8_repos:
+  - CentOS-Linux-AppStream.repo
+  - CentOS-Linux-BaseOS.repo
+  - CentOS-Linux-ContinuousRelease.repo
+  - CentOS-Linux-Devel.repo
+  - CentOS-Linux-Extras.repo
+  - CentOS-Linux-FastTrack.repo
+  - CentOS-Linux-HighAvailability.repo
+  - CentOS-Linux-Plus.repo
+  - CentOS-Linux-PowerTools.repo
+
+supported_distribution: ['CentOS', 'OracleLinux', 'AlmaLinux', 'Rocky']
+supported_major_version: ['7', '8']

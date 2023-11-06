@@ -1,0 +1,42 @@
+---
+# tasks file for common
+
+- name: Validate source distribution and major version
+  fail:
+    msg: "The system must be CentOS/Oracle/Alma/Rocky Linux 7 or 8"
+  when:
+    - ansible_distribution not in {{ supported_distribution }}
+    - ansible_distribution_major_version in {{ supported_major_version }}
+
+- name: Patch repositories if dealing with CentOS 8.
+  block:
+  - name: Comment mirrorlist in all repos.
+    replace:
+      path: /etc/yum.repos.d/{{ item }}
+      regexp: ^mirrorlist
+      replace: "#mirrorlist"
+    loop: "{{ centos8_repos }}"
+
+  - name: Switch repo to vault.centos.org.
+    replace:
+      path: /etc/yum.repos.d/{{ item }}
+      regexp: "#baseurl=http://mirror.centos.org"
+      replace: baseurl=https://vault.centos.org
+    loop: "{{ centos8_repos }}"
+    when: ansible_distribution == 'CentOS' and ansible_distribution_major_version | int == 8
+
+- name: Setup & Install Convert2RHEL
+  block:
+    - name: Download Red Hat GPG key
+      get_url:
+        url:  https://www.redhat.com/security/data/fd431d51.txt
+        dest: "/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
+
+    - name: Add Convert2RHEL yum repository from Red Hat
+      get_url:
+        url:  https://ftp.redhat.com/redhat/convert2rhel/{{ ansible_distribution_major_version }}/convert2rhel.repo
+        dest: "/etc/yum.repos.d/convert2rhel.repo"
+
+    - name: Install Convert2RHEL
+      yum:
+        name: convert2rhel
