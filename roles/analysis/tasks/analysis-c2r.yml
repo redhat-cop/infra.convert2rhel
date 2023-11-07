@@ -1,17 +1,17 @@
 ---
 - name: Convert2RHEL pre-analysis report
   ansible.builtin.shell: >
-    export PATH={{ os_path }}
+    export PATH={{ analysis_os_path }}
     set -o pipefail;
     convert2rhel analyze
-    {{ convert2rhel_preconv_opts }}
-    {{ convert2rhel_enable_repos_args }}
-    2>&1 | tee -a {{ log_file }}
+    {{ analysis_convert2rhel_preconv_opts }}
+    {{ analysis_convert2rhel_enable_repos_args }}
+    2>&1 | tee -a {{ common_log_file }}
   register: convert2rhel
   args:
     executable: /bin/bash
-  async: "{{ async_timeout_maximum | int }}"
-  poll: "{{ async_poll_interval | int }}"
+  async: "{{ analysis_async_timeout_maximum | int }}"
+  poll: "{{ analysis_async_poll_interval | int }}"
   failed_when: "'Pre-conversion analysis report' not in convert2rhel.stdout"
 
 - name: Include check-results-file.yml

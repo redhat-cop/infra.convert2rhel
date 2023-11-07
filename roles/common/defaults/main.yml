@@ -1,7 +1,10 @@
 ---
 # defaults file for common
 
-centos8_repos:
+common_log_directory: /var/log/ripu
+common_log_file: "{{ log_directory }}/ripu.log"
+
+common_centos8_repos:
   - CentOS-Linux-AppStream.repo
   - CentOS-Linux-BaseOS.repo
   - CentOS-Linux-ContinuousRelease.repo
@@ -12,5 +15,6 @@ centos8_repos:
   - CentOS-Linux-Plus.repo
   - CentOS-Linux-PowerTools.repo
 
-supported_distribution: ['CentOS', 'OracleLinux', 'AlmaLinux', 'Rocky']
-supported_major_version: ['7', '8']
+common_supported_distribution: ['CentOS', 'OracleLinux', 'AlmaLinux', 'Rocky']
+common_supported_major_version: ['7', '8']
+...

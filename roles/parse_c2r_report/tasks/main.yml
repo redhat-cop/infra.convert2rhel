@@ -5,12 +5,12 @@
 
 - name: Collect human readable report results
   ansible.builtin.slurp:
-    src: "{{ result_filename_txt }}"
+    src: "{{ parse_c2r_report_result_filename_txt }}"
   register: results_txt
 
 - name: Collect JSON report results
   ansible.builtin.slurp:
-    src: "{{ result_filename_json }}"
+    src: "{{ parse_c2r_report_result_filename_json }}"
   register: results_json
 
 - name: Parse report results
@@ -22,7 +22,7 @@
   ansible.builtin.set_fact:
     conversion_inhibited: true
   when:
-      # All of these are unnaceptable based on https://github.com/oamg/convert2rhel-worker-scripts/blob/main/scripts/preconversion_assessment_script.py#L121
+    # All of these are unnaceptable based on https://github.com/oamg/convert2rhel-worker-scripts/blob/main/scripts/preconversion_assessment_script.py#L121
     - "'SKIP' == item.result.level or 'SKIP' in item.msg_levels"
     - "'OVERRIDABLE' == item.result.level or 'OVERRIDABLE' in item.msg_levels"
     - "'ERROR' == item.result.level or 'ERROR' in item.msg_levels"
