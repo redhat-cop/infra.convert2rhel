@@ -5,7 +5,7 @@
 
 - name: Collect human readable report results
   ansible.builtin.slurp:
-    src: "{{ result_filename }}"
+    src: "{{ result_filename_txt }}"
   register: results_txt
 
 - name: Collect JSON report results

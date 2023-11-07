@@ -1,15 +1,8 @@
 ---
 # defaults file for analysis
-analysis_packages_centos7:
-  - convert2rhel
-
-# analysis_repos_centos7:
-#   - TODO?
 
 convert2rhel_preconv_opts: ""
 convert2rhel_repos_enabled: []
-
-post_reboot_delay: 120
 
 os_path: $PATH
 

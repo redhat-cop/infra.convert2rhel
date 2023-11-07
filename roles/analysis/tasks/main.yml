@@ -1,5 +1,11 @@
 ---
 # tasks file for analysis
+- name: Check distribution and install convert2rhel
+  ansible.builtin.import_role:
+    name: infra.convert2rhel.common
+  vars:
+    job_name: 'convert2rhel analysis'
+
 - name: /etc/ansible/facts.d directory exists
   ansible.builtin.file:
     path: /etc/ansible/facts.d
