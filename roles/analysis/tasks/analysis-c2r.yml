@@ -6,7 +6,7 @@
     convert2rhel analyze
     {{ analysis_convert2rhel_preconv_opts }}
     {{ analysis_convert2rhel_enable_repos_args }}
-    2>&1 | tee -a {{ common_log_file }}
+    2>&1
   register: convert2rhel
   args:
     executable: /bin/bash

@@ -1,9 +1,6 @@
 ---
 # defaults file for common
 
-common_log_directory: /var/log/ripu
-common_log_file: "{{ log_directory }}/ripu.log"
-
 common_centos8_repos:
   - CentOS-Linux-AppStream.repo
   - CentOS-Linux-BaseOS.repo
