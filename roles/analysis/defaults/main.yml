@@ -1,3 +1,11 @@
 ---
 # defaults file for analysis
+
+analysis_convert2rhel_preconv_opts: ""
+analysis_convert2rhel_repos_enabled: []
+
+analysis_os_path: $PATH
+
+analysis_async_timeout_maximum: 7200
+analysis_async_poll_interval: 60
 ...

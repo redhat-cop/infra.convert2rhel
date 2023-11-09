@@ -1,7 +1,7 @@
 ---
-- name: Tests for common role
+- name: Test parse_c2r_report
   hosts: localhost
   remote_user: root
   roles:
-    - common
+    - parse_c2r_report
 ...

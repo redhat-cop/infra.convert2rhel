@@ -1,7 +1,7 @@
 ---
 galaxy_info:
-  author: Rodolfo Olivieri
-  description: Common tasks shared between analysis and convert roles.
+  author: Andrea Waltlova
+  description: Tasks used for collecting and parsing convert2rhel analysis reports
   company: Red Hat
 
   # If the issue tracker for your role is not on github, uncomment the

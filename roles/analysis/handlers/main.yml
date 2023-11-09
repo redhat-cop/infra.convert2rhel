@@ -1,3 +1,11 @@
 ---
 # handlers file for analysis
+# Keep this last so it's easy to find in the job output.
+- name: Pre-conversion analysis report is done
+  ansible.builtin.debug:
+    msg: >-
+      The pre-conversion analysis report generation is now complete.
+      {{ 'WARNING: Inhibitors' if conversion_inhibited else 'SUCCESS: No inhibitors' }} found.
+      Review the result file at {{ anaysis_result_filename_txt }}.
+
 ...

@@ -1,0 +1,6 @@
+---
+# defaults file for parse_c2r_report
+parse_c2r_report_result_filename_prefix: /var/log/convert2rhel/convert2rhel-pre-conversion
+parse_c2r_report_result_filename_json: "{{ parse_c2r_report_result_filename_prefix }}.json"
+parse_c2r_report_result_filename_txt: "{{ parse_c2r_report_result_filename_prefix }}.txt"
+...

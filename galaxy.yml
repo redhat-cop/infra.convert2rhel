@@ -15,10 +15,10 @@ tags:
   - rhel
   - conversions
   - linux
-repository: https://github.com/r0x0d/infra.convert2rhel
+repository: https://github.com/redhat-cop/infra.convert2rhel
 # documentation: https://github.com/ansible-collection-migration/community.REPO_NAME/tree/main/docs
-homepage: https://github.com/r0x0d/infra.convert2rhel
-issues: https://github.com/r0x0d/infra.convert2rhel/issues
+homepage: https://github.com/redhat-cop/infra.convert2rhel
+issues: https://github.com/redhat-cop/infra.convert2rhel/issues
 build_ignore:
   # https://docs.ansible.com/ansible/devel/dev_guide/developing_collections_distributing.html#ignoring-files-and-folders
   - .gitignore
