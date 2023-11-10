@@ -40,4 +40,7 @@
     - name: Install Convert2RHEL
       ansible.builtin.yum:
         name: convert2rhel
+
+- name: Remove Convert2RHEL
+  ansible.builtin.include_tasks: remove-c2r.yml
 ...
