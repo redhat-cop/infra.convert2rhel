@@ -1,5 +1,22 @@
 ---
 # tasks file for convert
+
+- name: Convert2RHEL convert
+  ansible.builtin.shell: >
+    export PATH={{ convert_os_path }}
+    set -o pipefail;
+    convert2rhel convert
+    {{ convert_convert2rhel_opts }}
+    {{ convert_convert2rhel_enable_repos_args }}
+    {{ convert_convert2rhel_disable_repos_args }}
+    2>&1
+  register: convert2rhel
+  args:
+    executable: /bin/bash
+  async: "{{ convert_async_timeout_maximum | int }}"
+  poll: "{{ convert_async_poll_interval | int }}"
+  failed_when: convert2rhel.stderr | length > 0
+
 - name: Reboot if requested
   ansible.builtin.reboot:
     msg: "Host is starting Convert2RHEL!"

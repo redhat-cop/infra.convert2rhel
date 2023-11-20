@@ -1,3 +1,12 @@
 ---
 # defaults file for convert
+
+convert_convert2rhel_opts: ""
+convert_convert2rhel_repos_enabled: []
+convert_convert2rhel_repos_disabled: []
+
+convert_os_path: $PATH
+
+convert_async_timeout_maximum: 7200
+convert_async_poll_interval: 60
 ...

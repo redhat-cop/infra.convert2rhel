@@ -1,4 +1,7 @@
 ---
 # vars file for convert
 convert_reboot_requested: false
+
+convert_convert2rhel_enable_repos_args: "{{ ('--enablerepo ' + convert_convert2rhel_repos_enabled | default([], true) | join(' --enablerepo ')) if convert_convert2rhel_repos_enabled | length > 0 else '' }}"
+convert_convert2rhel_disable_repos_args: "{{ ('--disablerepo ' + convert_convert2rhel_repos_disabled | default([], true) | join(' --disablerepo ')) if convert_convert2rhel_repos_disabled | length > 0 else '' }}"
 ...
