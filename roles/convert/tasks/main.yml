@@ -29,4 +29,7 @@
   timeout: 180
   when: convert_reboot_requested
 
+- name: Display Conversion Status
+  ansible.builtin.debug:
+    msg: "Conversion was {{ 'inhibited' if ansible_facts.conversion_inhibited else 'successful' }}"
 ...
