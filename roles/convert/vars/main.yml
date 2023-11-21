@@ -1,3 +1,4 @@
 ---
 # vars file for convert
+convert_reboot_requested: false
 ...

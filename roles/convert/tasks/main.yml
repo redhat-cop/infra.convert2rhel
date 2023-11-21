@@ -1,3 +1,9 @@
 ---
 # tasks file for convert
+- name: Reboot if requested
+  ansible.builtin.reboot:
+    msg: "Host is starting Convert2RHEL!"
+    reboot_timeout: 120
+  timeout: 180
+  when: convert_reboot_requested
 ...
