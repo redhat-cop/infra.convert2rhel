@@ -1,0 +1,19 @@
+---
+- name: Remove gpg key
+  ansible.builtin.file:
+    path: /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+    state: absent
+  when: common_gpg_key_remove
+
+- name: Remove convert2rhel repo
+  ansible.builtin.file:
+    path: /etc/yum.repos.d/convert2rhel.repo
+    state: absent
+  when: common_convert2rhel_repo_remove
+
+- name: Remove convert2rhel package
+  ansible.builtin.package:
+    name: convert2rhel
+    state: absent
+  when: common_convert2rhel_package_remove
+...

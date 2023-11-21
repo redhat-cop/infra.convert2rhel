@@ -1,3 +1,6 @@
 ---
 # vars file for common
+common_gpg_key_remove: false
+common_convert2rhel_repo_remove: true
+common_convert2rhel_package_remove: true
 ...
