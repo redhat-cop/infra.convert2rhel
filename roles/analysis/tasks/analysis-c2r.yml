@@ -8,6 +8,9 @@
     -c {{ convert2rhel_configfile.path }}
     {{ analysis_convert2rhel_enable_repos_args }}
     {{ analysis_convert2rhel_disable_repos_args }}
+    {% if analysis_convert2rhel_eus %}
+    --eus
+    {% endif %}
     2>&1
   register: convert2rhel
   args:

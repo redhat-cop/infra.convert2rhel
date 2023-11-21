@@ -2,6 +2,8 @@
 # defaults file for analysis
 
 analysis_convert2rhel_preconv_opts: ""
+# If you are converting to RHEL 8.8 and have an Extended Upgrade Support (EUS), add the --eus option by setting this variable to true.
+analysis_convert2rhel_eus: false
 analysis_convert2rhel_repos_enabled: []
 analysis_convert2rhel_repos_disabled: []
 
