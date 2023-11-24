@@ -41,6 +41,17 @@
       ansible.builtin.yum:
         name: convert2rhel
 
+- name: Create temporary configuration file
+  ansible.builtin.tempfile:
+    state: file
+    prefix: convert2rhel_configfile_
+  register: convert2rhel_configfile
+
+- name: Write config into configuration file
+  ansible.builtin.template:
+    src: configfile.j2
+    dest: "{{ convert2rhel_configfile.path }}"
+
 - name: Remove Convert2RHEL
   ansible.builtin.include_tasks: remove-c2r.yml
 ...

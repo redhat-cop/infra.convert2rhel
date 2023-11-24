@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+# This file should be in mode 0600
+# Example of configuration file convert2rhel.ini for secrets.
+# Possible locations of this file:
+# 1) user specified and passed by -c, --config-file option; highest priority
+# 2) ~/.convert2rhel.ini; lower priority
+# 3) /etc/convert2rhel.ini; the lowest priority
+
+[subscription_manager]
+username       = {{ rhsm_username }}
+password       = {{ rhsm_password }}
+activation_key = {{ rhsm_activation_key }}
+org            = {{ rhsm_org }}

@@ -5,6 +5,7 @@
     set -o pipefail;
     convert2rhel analyze
     {{ analysis_convert2rhel_preconv_opts }}
+    -c {{ convert2rhel_configfile.path }}
     {{ analysis_convert2rhel_enable_repos_args }}
     {{ analysis_convert2rhel_disable_repos_args }}
     2>&1
