@@ -39,4 +39,7 @@
     reboot_timeout: 120
   timeout: 180
   when: convert_reboot_requested
+
+- name: Remove Convert2RHEL
+  ansible.builtin.include_tasks: remove-c2r.yml
 ...
