@@ -15,7 +15,7 @@
     executable: /bin/bash
   async: "{{ convert_async_timeout_maximum | int }}"
   poll: "{{ convert_async_poll_interval | int }}"
-  failed_when: convert2rhel.stderr | length > 0
+  failed_when: convert2rhel.rc != 0
 
 - name: Reboot if requested
   ansible.builtin.reboot:
