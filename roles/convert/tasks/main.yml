@@ -4,6 +4,10 @@
   ansible.builtin.import_role:
     name: infra.convert2rhel.common
 
+- name: Include the parse_c2r_report role to check if conversion inhibited
+  ansible.builtin.include_role:
+    name: infra.convert2rhel.parse_c2r_report
+
 - name: Convert2RHEL convert
   ansible.builtin.shell: >
     export PATH={{ convert_os_path }}
@@ -22,14 +26,14 @@
   failed_when: convert2rhel.rc != 0
   notify: Remove temporary configuration file
 
+- name: Display Conversion Status
+  ansible.builtin.debug:
+    msg: "Conversion was {{ 'inhibited' if ansible_facts.conversion_inhibited else 'successful' }}"
+
 - name: Reboot if requested
   ansible.builtin.reboot:
     msg: "Host is starting Convert2RHEL!"
     reboot_timeout: 120
   timeout: 180
   when: convert_reboot_requested
-
-- name: Display Conversion Status
-  ansible.builtin.debug:
-    msg: "Conversion was {{ 'inhibited' if ansible_facts.conversion_inhibited else 'successful' }}"
 ...
