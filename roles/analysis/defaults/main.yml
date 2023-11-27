@@ -3,6 +3,7 @@
 
 analysis_convert2rhel_preconv_opts: ""
 analysis_convert2rhel_repos_enabled: []
+analysis_convert2rhel_repos_disabled: []
 
 analysis_os_path: $PATH
 
