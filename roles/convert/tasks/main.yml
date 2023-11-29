@@ -1,5 +1,8 @@
 ---
 # tasks file for convert
+- name: Check distribution and install convert2rhel
+  ansible.builtin.import_role:
+    name: infra.convert2rhel.common
 
 - name: Convert2RHEL convert
   ansible.builtin.shell: >
@@ -7,6 +10,7 @@
     set -o pipefail;
     convert2rhel convert
     {{ convert_convert2rhel_opts }}
+    -c {{ convert2rhel_configfile.path }}
     {{ convert_convert2rhel_enable_repos_args }}
     {{ convert_convert2rhel_disable_repos_args }}
     2>&1
@@ -23,4 +27,9 @@
     reboot_timeout: 120
   timeout: 180
   when: convert_reboot_requested
+
+- name: Remove temporary configuration file
+  ansible.builtin.file:
+    name: "{{ convert2rhel_configfile.path }}"
+    state: absent
 ...
