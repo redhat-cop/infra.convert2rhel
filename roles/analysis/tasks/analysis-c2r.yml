@@ -15,6 +15,7 @@
   async: "{{ analysis_async_timeout_maximum | int }}"
   poll: "{{ analysis_async_poll_interval | int }}"
   failed_when: "'Pre-conversion analysis report' not in convert2rhel.stdout"
+  notify: Remove temporary configuration file
 
 - name: Include check-results-file.yml
   ansible.builtin.include_tasks: check-results-file.yml
