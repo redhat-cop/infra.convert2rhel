@@ -83,6 +83,26 @@ jobs:
           tag: ${{ github.ref }}
           overwrite: true
   changelog:
+    exclude:
+      labels:
+        - no-changelog
+      authors:
+        - dependabot
+        - pre-commit-ci
+    categories:
+      - title: Breaking Changes 🛠
+        labels:
+          - breaking-change
+      - title: Enhancements 🎉
+        labels:
+          - enhancement
+      - title: Bug Fixes 🐛
+        labels:
+          - bug-fix
+      - title: Other Changes
+        labels:
+          - "*"
+
     needs:
       - infra_release
     runs-on: ubuntu-latest
