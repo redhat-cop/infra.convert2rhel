@@ -33,8 +33,4 @@
   changed_when: true
   notify: Pre-conversion analysis report is done
 
-- name: Remove temporary configuration file
-  ansible.builtin.file:
-    name: "{{ convert2rhel_configfile.path }}"
-    state: absent
 ...

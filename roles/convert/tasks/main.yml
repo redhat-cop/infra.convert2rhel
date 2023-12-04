@@ -20,6 +20,7 @@
   async: "{{ convert_async_timeout_maximum | int }}"
   poll: "{{ convert_async_poll_interval | int }}"
   failed_when: convert2rhel.rc != 0
+  notify: Remove temporary configuration file
 
 - name: Reboot if requested
   ansible.builtin.reboot:
@@ -28,8 +29,4 @@
   timeout: 180
   when: convert_reboot_requested
 
-- name: Remove temporary configuration file
-  ansible.builtin.file:
-    name: "{{ convert2rhel_configfile.path }}"
-    state: absent
 ...
