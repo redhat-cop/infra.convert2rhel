@@ -3,7 +3,7 @@
   ansible.builtin.shell: >
     export PATH={{ analysis_os_path }}
     set -o pipefail;
-    convert2rhel analyze
+    convert2rhel analyze -y
     {{ analysis_convert2rhel_preconv_opts }}
     -c {{ convert2rhel_configfile.path }}
     {{ analysis_convert2rhel_enable_repos_args }}

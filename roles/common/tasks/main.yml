@@ -16,6 +16,7 @@
         regexp: ^mirrorlist
         replace: "#mirrorlist"
       loop: "{{ common_centos8_repos }}"
+      when: ansible_distribution == 'CentOS' and ansible_distribution_major_version | int == 8
 
     - name: Switch repo to vault.centos.org.
       ansible.builtin.replace:

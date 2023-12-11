@@ -18,17 +18,17 @@
     convert2rhel_report_txt: "{{ results_txt.content | b64decode | split('\n') }}"
     convert2rhel_report_json: "{{ results_json.content | b64decode | from_json }}"
 
-- name: Check for SKIP, OVERRIDABLE, ERROR statuses
+- name: Check for inhibitor statuses in the report
   ansible.builtin.set_fact:
     conversion_inhibited: true
   when:
-    # All of these are unnaceptable based on https://github.com/oamg/convert2rhel-worker-scripts/blob/main/scripts/preconversion_assessment_script.py#L121
-    - "'SKIP' == item.result.level or 'SKIP' in item.msg_levels"
-    - "'OVERRIDABLE' == item.result.level or 'OVERRIDABLE' in item.msg_levels"
-    - "'ERROR' == item.result.level or 'ERROR' in item.msg_levels"
-
-  loop: "{{ report_actions }}"
+    - item in inhibitors_statuses
+  loop: "{{ report_message_levels.values() | unique }}"
   vars:
-    report_actions: "{{ convert2rhel_report_json.actions | map('combine', {'msg_levels': item.messages | map(attribute='level')}) | convert2rhel_report_json.actions }}"
-
+    # All of these are unnaceptable based on https://github.com/oamg/convert2rhel-worker-scripts/blob/main/scripts/preconversion_assessment_script.py#L121
+    inhibitors_statuses:
+      - "SKIP"
+      - "OVERRIDABLE"
+      - "ERROR"
+    report_message_levels: "{{ lookup('ansible.utils.to_paths', convert2rhel_report_json) | dict2items | selectattr('key', 'search', 'level') | items2dict }}"
 ...
