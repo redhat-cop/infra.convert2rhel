@@ -14,7 +14,7 @@ These are the roles included in the collection. Follow the links below to see th
 
 - [`analysis`](./roles/analysis/) - executes the convert2rhel analysis phase
 - [`common`](./roles/common/) - used for local logging, mutex locking, and common vars
-- [`parse_convert2rhel_report`](./roles/parse_convert2rhel_report/) - reads convert2rhel results and checks for inhibitors
+- [`parse_c2r_report`](./roles/parse_c2r_report/) - reads convert2rhel results and checks for inhibitors
 - [`convert`](./roles/convert/) - executes the convert2rhel OS conversion
 
 ## Example playbooks
