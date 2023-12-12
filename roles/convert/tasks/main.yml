@@ -22,7 +22,7 @@
     executable: /bin/bash
   async: "{{ convert_async_timeout_maximum | int }}"
   poll: "{{ convert_async_poll_interval | int }}"
-  failed_when: convert2rhel.rc != 0
+  changed_when: convert2rhel.rc != 0
   notify: Remove temporary configuration file
 
 - name: Include the parse_c2r_report role to check if conversion inhibited
