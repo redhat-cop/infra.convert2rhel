@@ -22,10 +22,10 @@ pre-commit:
 install: install-deps pre-commit
 
 analysis: install-deps
-	$(PYTHON_VENV)/bin/activate; cd extensions && molecule converge --scenario-name analysis
+	. $(PYTHON_VENV)/bin/activate; cd extensions && molecule converge --scenario-name analysis
 
 convert: install-deps
-	$(PYTHON_VENV)/bin/activate; cd extensions && molecule converge --scenario-name conversion
+	. $(PYTHON_VENV)/bin/activate; cd extensions && molecule converge --scenario-name conversion
 
 destroy: install-deps
-	$(PYTHON_VENV)/bin/activate; cd extensions && molecule destroy --scenario-name conversion && molecule destroy --scenario-name analysis
+	. $(PYTHON_VENV)/bin/activate; cd extensions && molecule destroy --scenario-name conversion && molecule destroy --scenario-name analysis
