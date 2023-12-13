@@ -3,7 +3,7 @@
   ansible.builtin.shell: >
     export PATH={{ analysis_os_path }}
     set -o pipefail;
-    convert2rhel analyze
+    convert2rhel analyze -y
     {{ analysis_convert2rhel_preconv_opts }}
     -c {{ convert2rhel_configfile.path }}
     {{ analysis_convert2rhel_enable_repos_args }}
@@ -17,7 +17,7 @@
     executable: /bin/bash
   async: "{{ analysis_async_timeout_maximum | int }}"
   poll: "{{ analysis_async_poll_interval | int }}"
-  failed_when: "'Pre-conversion analysis report' not in convert2rhel.stdout"
+  changed_when: "'Pre-conversion analysis report' not in convert2rhel.stdout"
   notify: Remove temporary configuration file
 
 - name: Include check-results-file.yml

@@ -1,11 +1,11 @@
 ---
 - name: Result file status
   ansible.builtin.stat:
-    path: "{{ result_filename_txt }}"
+    path: "{{ analysis_result_filename_txt }}"
   register: result
 
 - name: Check that result file exists
   ansible.builtin.assert:
     that: result.stat.exists
-    msg: "The pre-conversion analysis report file {{ anaysis_result_filename_txt }} was not created."
+    msg: "The pre-conversion analysis report file {{ analysis_result_filename_txt }} was not created."
 ...

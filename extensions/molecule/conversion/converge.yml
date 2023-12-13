@@ -1,0 +1,3 @@
+---
+- name: Test pre-conversion analysis
+  ansible.builtin.import_playbook: infra.convert2rhel.convert

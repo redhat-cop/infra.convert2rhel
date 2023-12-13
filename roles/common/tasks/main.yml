@@ -5,8 +5,8 @@
   ansible.builtin.fail:
     msg: "The system must be CentOS/Oracle/Alma/Rocky Linux 7 or 8"
   when:
-    - ansible_distribution not in {{ common_supported_distribution }}
-    - ansible_distribution_major_version in {{ common_supported_major_version }}
+    - ansible_distribution not in common_supported_distribution
+    - ansible_distribution_major_version in common_supported_major_version
 
 - name: Patch repositories if dealing with CentOS 8.
   block:
@@ -16,6 +16,7 @@
         regexp: ^mirrorlist
         replace: "#mirrorlist"
       loop: "{{ common_centos8_repos }}"
+      when: ansible_distribution == 'CentOS' and ansible_distribution_major_version | int == 8
 
     - name: Switch repo to vault.centos.org.
       ansible.builtin.replace:
@@ -31,11 +32,13 @@
       ansible.builtin.get_url:
         url:  https://www.redhat.com/security/data/fd431d51.txt
         dest: "/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
+        mode: '0644'
 
     - name: Add Convert2RHEL yum repository from Red Hat
       ansible.builtin.get_url:
         url:  https://ftp.redhat.com/redhat/convert2rhel/{{ ansible_distribution_major_version }}/convert2rhel.repo
         dest: "/etc/yum.repos.d/convert2rhel.repo"
+        mode: '0644'
 
     - name: Install Convert2RHEL
       ansible.builtin.yum:
@@ -51,4 +54,5 @@
   ansible.builtin.template:
     src: configfile.j2
     dest: "{{ convert2rhel_configfile.path }}"
+    mode: '0600'
 ...

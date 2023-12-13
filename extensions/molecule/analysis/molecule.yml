@@ -1,0 +1,21 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    # Can be any supported provider (virtualbox, parallels, libvirt, etc)
+    name: libvirt
+platforms:
+  - name: instance
+    hostname: infra.convert2rhel
+    box: eurolinux-vagrant/centos-7
+    memory: 2048
+    cpus: 2
+    default_box: 'eurolinux-vagrant/centos-7'
+
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      collections_path: ${ANSIBLE_COLLECTIONS_PATH}

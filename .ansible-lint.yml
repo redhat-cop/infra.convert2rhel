@@ -9,6 +9,7 @@ exclude_paths:
   - 'changelogs/'
   - 'docs/'
   - 'collections/'
+  - 'extensions/molecule/'
 
 # Ansible Linter rules
 skip_list:

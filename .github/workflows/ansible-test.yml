@@ -63,7 +63,6 @@ jobs:
           # - stable-2.10 # Only if your collection supports ansible-base 2.10
           # - stable-2.11 # Only if your collection supports ansible-core 2.11
           # - stable-2.12
-          - stable-2.13
           - stable-2.14
           - stable-2.15
           # - devel
@@ -125,7 +124,6 @@ jobs:
           # - stable-2.10 # Only if your collection supports ansible-base 2.10
           # - stable-2.11 # Only if your collection supports ansible-core 2.11
           # - stable-2.12
-          - stable-2.13
           - stable-2.14
           - stable-2.15
           - devel
@@ -171,7 +169,7 @@ jobs:
       ${{ contains(fromJson(
           '["stable-2.9", "stable-2.10", "stable-2.11"]'
       ), matrix.ansible) && 'ubuntu-20.04' || 'ubuntu-latest' }}
-    name: I (Ⓐ${{ matrix.ansible }}+py${{ matrix.python }})
+    name: Integration (Ⓐ${{ matrix.ansible }}+py${{ matrix.python }})
     strategy:
       fail-fast: false
       matrix:
@@ -182,7 +180,6 @@ jobs:
           # - stable-2.10 # Only if your collection supports ansible-base 2.10
           # - stable-2.11 # Only if your collection supports ansible-core 2.11
           # - stable-2.12
-          - stable-2.13
           - stable-2.14
           - stable-2.15
           - devel
@@ -208,14 +205,16 @@ jobs:
           - ansible: stable-2.11
             python: '3.10'
           # Python 2.6 is not supported with ansible-core >= 2.13
-          - ansible: stable-2.13
-            python: '2.6'
           - ansible: stable-2.14
             python: '2.6'
           - ansible: stable-2.15
             python: '2.6'
           - ansible: devel
             python: '2.6'
+          - ansible: devel
+            python: '2.7'
+          - ansible: devel
+            python: '3.6'
 
 
     steps:
