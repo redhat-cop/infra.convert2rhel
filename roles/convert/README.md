@@ -1,38 +1,45 @@
-Role Name
-=========
+Convert
+=======
 
-A brief description of the role goes here.
+The `convert` role is used to perform the actual conversion of the target hosts. After the conversion is complete target hosts are cleaned up by removing the `convert2rhel` package and any related files.
 
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+This role will not fail if there are inhibitors found, it will throw a warning. However, there is a fact available `conversion_inhibited` which indicates whether the conversion will be inhibited or not and you can choose to fail your own playbook using this variable.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+| Name                  | Type | Default value           | Description                                     |
+|-----------------------|------|-------------------------|-------------------------------------------------|
+| convert_convert2rhel_opts | String | | Optional string to define command line options to be passed to the `convert2rhel` command when running the conversion. |
+| convert_convert2rhel_eus | Boolean | false | If you are converting to RHEL 8.8 and have an Extended Upgrade Support (EUS), add the --eus option by setting this variable to true. |
+| convert_convert2rhel_repos_enabled | List | [] | List of repositories to enable on the target node |
+| convert_convert2rhel_repos_disabled | List | [] | List of repositories to disable on the target node |
+| convert_os_path | String | $PATH | Option string to override the $PATH variable used on the target node |
+| convert_async_timeout_maximum   | Int | 7200                  | Variable used to set the asynchronous task timeout value (in seconds)
+| convert_async_poll_interval     | Int | 60                    | Variable used to set the asynchronous task polling internal value (in seconds)
+
+## Red Hat Subscription Manager (RHSM) variables
+
+RHSM credentials provide a method to identify content views available from Red Hat Subscription Manager (RHSM). Use these variables to specify the RHSM credentials for the required content views.
+
+| Name                  | Type | Default value           | Description                                     |
+|-----------------------|------|-------------------------|-------------------------------------------------|
+| rhsm_username         | String   |  | RHSM username |
+| rhsm_password         | String   |  | RHSM password |
+| rhsm_org              | String   |  | RHSM organization |
+| rhsm_activation_key   | String   |  | RHSM activation key |
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This role is dependent on the `common` role and `parse_c2r_report` role.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+See [convert.yml](../../playbooks/convert.yml)
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT

@@ -1,38 +1,25 @@
-Role Name
-=========
+Common
+======
 
-A brief description of the role goes here.
-
-Requirements
-------------
-
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+The `common` role is used to perform tasks that are shared between the `analysis` and `convert` roles. This includes checking the distribution and installing `convert2rhel`, and also creating temporary files need for the conversion.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+Following variables are recommended to **NOT** be changed.
+
+| Name                  | Type | Default value           | Description                                     |
+|-----------------------|------|-------------------------|-------------------------------------------------|
+| common_centos8_repos  | List | [CentOS-Linux-AppStream.repo, CentOS-Linux-BaseOS.repo, CentOS-Linux-ContinuousRelease.repo, CentOS-Linux-Devel.repo, CentOS-Linux-Extras.repo, CentOS-Linux-FastTrack.repo, CentOS-Linux-HighAvailability.repo, CentOS-Linux-Plus.repo, CentOS-Linux-PowerTools.repo] | List of CentOS 8 repositories to enable on the target node |
+| common_supported_distribution | List | [CentOS, OracleLinux, AlmaLinux, Rocky] | List of supported distributions |
+| common_supported_major_version | List | [7, 8] | List of supported major versions |
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
-
-Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+This role is a dependency for the `analysis` and `convert` roles. It does not depend on any other roles.
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+MIT
