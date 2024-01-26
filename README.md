@@ -8,6 +8,8 @@
 
 This collection provides Ansible roles you can use to perform conversion using the Convert2RHEL framework. Use these roles as the foundation of your conversion automation solution.
 
+Please check the [release section](https://github.com/oamg/infra.convert2rhel/releases) of the repository to find information about the latest updates and publication to the Ansible Galaxy.
+
 ## Roles
 
 These are the roles included in the collection. Follow the links below to see the detailed documentation and example playbooks for each role.
