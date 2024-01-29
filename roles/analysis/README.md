@@ -1,5 +1,5 @@
 Analysis
-=========
+========
 
 The `analysis` role is used to create the `pre-conversion` report on the target hosts.
 
@@ -28,6 +28,11 @@ RHSM credentials provide a method to identify content views available from Red H
 | rhsm_password         | String   |  | RHSM password |
 | rhsm_org              | String   |  | RHSM organization |
 | rhsm_activation_key   | String   |  | RHSM activation key |
+
+Dependencies
+------------
+
+This role is dependent on the `common` role and `parse_c2r_report` role.
 
 Example Playbook
 ----------------
