@@ -1,5 +1,7 @@
 ---
 # tasks file for common
+- name: Determinate repofile for target
+  ansible.builtin.include_tasks: determinate-repofile.yml
 
 - name: Validate source distribution and major version
   ansible.builtin.fail:
@@ -36,7 +38,7 @@
 
     - name: Add Convert2RHEL yum repository from Red Hat
       ansible.builtin.get_url:
-        url:  https://ftp.redhat.com/redhat/convert2rhel/{{ ansible_distribution_major_version }}/convert2rhel.repo
+        url: "{{ convert2rhel_repofile_url }}"
         dest: "/etc/yum.repos.d/convert2rhel.repo"
         mode: '0644'
 
