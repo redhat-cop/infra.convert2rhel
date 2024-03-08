@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "enabledManagers": [
+    "github-actions"
+  ],
+  "labels": ["no-changelog"]
+}
