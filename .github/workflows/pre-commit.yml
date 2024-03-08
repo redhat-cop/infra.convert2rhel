@@ -34,5 +34,5 @@ jobs:
 
       - name: Install collection dependencies
         run: ansible-galaxy collection install -r ${{ github.run_id }}.yml
-      - uses: pre-commit/action@v3.0.0
+      - uses: pre-commit/action@v3.0.1
 ...
