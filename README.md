@@ -1,6 +1,7 @@
 # Ansible Convert2RHEL Collection
 
 [![CI](https://github.com/redhat-cop/infra.convert2rhel/workflows/CI/badge.svg?event=push)](https://github.com/redhat-cop/infra.convert2rhel/actions) [![Lint](https://github.com/redhat-cop/infra.convert2rhel/workflows/Yaml%20and%20Ansible%20Lint/badge.svg?event=push)](https://github.com/redhat-cop/infra.convert2rhel/actions) [![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7438/badge)](https://bestpractices.coreinfrastructure.org/projects/7438)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8649/badge)](https://www.bestpractices.dev/projects/8649)
 
 <!-- [![Codecov](https://img.shields.io/codecov/c/github/redhat-cop/infra.convert2rhel)](https://codecov.io/gh/redhat-cop/infra.convert2rhel) -->
 
