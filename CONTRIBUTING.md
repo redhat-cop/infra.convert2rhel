@@ -16,3 +16,34 @@ bugfixes:
 ```
 
 For more tags, please see [Changelog sections](changelogs/config.yaml).
+
+## Testing locally
+
+For testing this project locally, you will need to set up the project to this
+folder structure on your machine:
+
+```bash
+.
+├── ansible_collections
+│   └── infra
+│       └── convert2rhel
+```
+
+This is required so `molecule` can find it's own configuration to provision a
+VM.
+
+After moving the project to the above mentioned layout, you can simply run:
+
+```bash
+# To execute an analysis
+make analysis
+# To execute an conversion
+make convert
+```
+
+And after you are done with your local tests, you can cleanup with:
+
+```bash
+# Will remove the local VM provisioned by molecule.
+make destroy
+```
