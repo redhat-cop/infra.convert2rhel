@@ -1,8 +1,5 @@
 ---
 # tasks file for common
-- name: Determinate repofile for target
-  ansible.builtin.include_tasks: determinate-repofile.yml
-
 - name: Validate source distribution and major version
   ansible.builtin.fail:
     msg: "The system must be CentOS/Oracle/Alma/Rocky Linux 7 or 8"
@@ -35,6 +32,9 @@
         url:  https://www.redhat.com/security/data/fd431d51.txt
         dest: "/etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
         mode: '0644'
+
+    - name: Determinate repofile for target
+      ansible.builtin.include_tasks: determinate-repofile.yml
 
     - name: Add Convert2RHEL yum repository from Red Hat
       ansible.builtin.get_url:
