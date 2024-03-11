@@ -6,7 +6,7 @@
 
 - name: Convert2RHEL convert
   ansible.builtin.shell: >
-    export PATH={{ convert_os_path }}
+    export PATH={{ convert_os_path }};
     set -o pipefail;
     convert2rhel convert -y
     {{ convert_convert2rhel_opts }}

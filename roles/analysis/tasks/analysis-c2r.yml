@@ -1,7 +1,7 @@
 ---
 - name: Convert2RHEL pre-analysis report
   ansible.builtin.shell: >
-    export PATH={{ analysis_os_path }}
+    export PATH={{ analysis_os_path }};
     set -o pipefail;
     convert2rhel analyze -y
     {{ analysis_convert2rhel_preconv_opts }}
