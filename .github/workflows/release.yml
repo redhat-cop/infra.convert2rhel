@@ -8,6 +8,9 @@ on:
     types:
       - published
 
+permissions:
+  contents: write
+
 jobs:
   pre-commit:
     uses: redhat-cop/infra.convert2rhel/.github/workflows/pre-commit.yml@main
@@ -76,7 +79,7 @@ jobs:
           rm ansible.cfg
 
       - name: Upload files to tag
-        uses: svenstaro/upload-release-action@v2
+        uses: svenstaro/upload-release-action@2.9.0
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ${{ steps.build.outputs.tar_file }}
