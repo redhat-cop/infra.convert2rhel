@@ -27,11 +27,7 @@ Example playbooks can be found [here](./playbooks/).
 
 ## Installing the collection from Ansible Galaxy
 
-Before using this collection, you need to install it with the Ansible Galaxy command-line tool:
-
-```bash
-ansible-galaxy collection install infra.convert2rhel
-```
+You can install the collection from [Ansible Galaxy](https://galaxy.ansible.com/ui/repo/published/infra/convert2rhel/) by running `ansible-galaxy collection install infra.convert2rhel`.
 
 You can also include it in a `requirements.yml` file and install it with `ansible-galaxy collection install -r requirements.yml`, using the format:
 
