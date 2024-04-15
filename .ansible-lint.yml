@@ -1,27 +1,24 @@
 ---
-# Ansible Linter rules
-# mock_modules:
-#   - community.vmware.vmware_guest_snapshot
+profile: production
 
 # Exclude paths from linter
 exclude_paths:
-  - '.github/'
-  - 'changelogs/'
-  - 'docs/'
-  - 'collections/'
-  - 'extensions/molecule/'
+  - ".github/"
+  - "changelogs/"
+  - "docs/"
+  - "collections/"
+  - "extensions/molecule/"
 
 # Ansible Linter rules
 skip_list:
   - yaml[colons] # Violations reported by yamllint.
-  - yaml[line-length]  # Violations reported by yamllint.
+  - yaml[line-length] # Violations reported by yamllint.
 
-warn_list:  # or 'skip_list' to silence them completely
+warn_list: # or 'skip_list' to silence them completely
   - git-latest # Allow for newest git version
   - package-latest # Allow newest package version
-  - template-instead-of-copy  # Templated files should use template instead of copy
+  - template-instead-of-copy # Templated files should use template instead of copy
   # - command-instead-of-shell  # Use shell only when shell functionality is required.
   # - no-changed-when # temp until updated all tasks
   # - sanity[cannot-ignore] # cope with shebang test bug
-
 ...
