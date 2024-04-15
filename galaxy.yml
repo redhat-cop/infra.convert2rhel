@@ -28,4 +28,3 @@ dependencies:
   ansible.posix: ">=1.5.1"
   community.general: ">=6.6.0"
   ansible.utils: ">=2.12.0"
-...
