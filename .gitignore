@@ -133,3 +133,6 @@ dmypy.json
 
 install-deps
 pre-commit
+
+# Ignore ansible.cfg
+ansible.cfg
