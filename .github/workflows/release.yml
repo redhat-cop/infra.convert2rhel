@@ -1,5 +1,5 @@
 ---
-# This workflow action will run pre-commit, which will execute ansible and yaml linting
+# This workflow action will run ansible-lint, which will execute ansible and yaml linting
 # See .pre-commit-config.yaml for what hooks are executed
 name: Release
 
@@ -12,19 +12,19 @@ permissions:
   contents: write
 
 jobs:
-  pre-commit:
-    uses: redhat-cop/infra.convert2rhel/.github/workflows/pre-commit.yml@main
+  ansible-lint:
+    uses: redhat-cop/infra.convert2rhel/.github/workflows/ansible-lint.yml@main
   sanity:
     uses: redhat-cop/infra.convert2rhel/.github/workflows/ansible-test.yml@main
   prechecks:
     needs:
-      - pre-commit
+      - ansible-lint
       - sanity
     runs-on: ubuntu-latest
     steps:
       - run: >-
           python -c "assert set([
-          '${{ needs.pre-commit.result }}',
+          '${{ needs.ansible-lint.result }}',
           '${{ needs.sanity.result }}',
           ]) == {'success'}"
   infra_release:
