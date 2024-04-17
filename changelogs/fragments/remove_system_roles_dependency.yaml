@@ -1,0 +1,4 @@
+---
+minor_changes:
+  - removed fedora.linux_system_roles dependency from required dependencies
+...
