@@ -6,6 +6,7 @@ on: [push, pull_request, workflow_call]  # yamllint disable-line rule:truthy
 jobs:
   ansible-lint:
     runs-on: ubuntu-latest
+    if: always() && github.repository == 'redhat-cop/infra.convert2rhel'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

@@ -21,6 +21,7 @@ jobs:
       - ansible-lint
       - sanity
     runs-on: ubuntu-latest
+    if: always() && github.repository == 'redhat-cop/infra.convert2rhel'
     steps:
       - run: >-
           python -c "assert set([
@@ -31,6 +32,7 @@ jobs:
     needs:
       - prechecks
     runs-on: ubuntu-latest
+    if: always() && github.repository == 'redhat-cop/infra.convert2rhel'
     steps:
       - uses: actions/checkout@v4
 
@@ -90,6 +92,7 @@ jobs:
     needs:
       - infra_release
     runs-on: ubuntu-latest
+    if: always() && github.repository == 'redhat-cop/infra.convert2rhel'
     env:
       ANSIBLE_FORCE_COLOR: 1
     steps:
