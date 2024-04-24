@@ -11,4 +11,6 @@ analysis_os_path: $PATH
 
 analysis_async_timeout_maximum: 7200
 analysis_async_poll_interval: 60
+
+analysis_no_rhsm: false
 ...

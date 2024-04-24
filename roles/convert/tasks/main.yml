@@ -16,6 +16,9 @@
     {% if convert_convert2rhel_eus %}
     --eus
     {% endif %}
+    {% if convert_no_rhsm %}
+    --no-rhsm
+    {% endif %}
     2>&1
   register: convert2rhel
   args:
