@@ -15,6 +15,7 @@ on:
 jobs:
   docsite:
     name: Lint extra docsite docs and links
+    if: always() && github.repository == 'redhat-cop/infra.convert2rhel'
     permissions:
       contents: read
     runs-on: ubuntu-latest

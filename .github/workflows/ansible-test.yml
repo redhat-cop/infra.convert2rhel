@@ -46,6 +46,7 @@ jobs:
 
   sanity:
     name: Sanity (Ⓐ${{ matrix.ansible }})
+    if: always() && github.repository == 'redhat-cop/infra.convert2rhel'
     strategy:
       matrix:
         ansible:
@@ -113,6 +114,7 @@ jobs:
           '["stable-2.9", "stable-2.10", "stable-2.11"]'
       ), matrix.ansible) && 'ubuntu-20.04' || 'ubuntu-latest' }}
     name: Units (Ⓐ${{ matrix.ansible }})
+    if: always() && github.repository == 'redhat-cop/infra.convert2rhel'
     strategy:
       # As soon as the first unit test fails, cancel the others to free up the CI queue
       fail-fast: true
@@ -170,6 +172,7 @@ jobs:
           '["stable-2.9", "stable-2.10", "stable-2.11"]'
       ), matrix.ansible) && 'ubuntu-20.04' || 'ubuntu-latest' }}
     name: Integration (Ⓐ${{ matrix.ansible }}+py${{ matrix.python }})
+    if: always() && github.repository == 'redhat-cop/infra.convert2rhel'
     strategy:
       fail-fast: false
       matrix:
@@ -241,7 +244,7 @@ jobs:
   check:  # This job does nothing and is only used for the branch protection
           # or multi-stage CI jobs, like making sure that all tests pass before
           # a publishing job is started.
-    if: always()
+    if: always() && github.repository == 'redhat-cop/infra.convert2rhel'
 
     needs:
       - sanity
