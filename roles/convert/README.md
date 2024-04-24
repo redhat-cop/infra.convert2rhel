@@ -15,12 +15,13 @@ Role Variables
 | convert_convert2rhel_repos_enabled | List | [] | List of repositories to enable on the target node |
 | convert_convert2rhel_repos_disabled | List | [] | List of repositories to disable on the target node |
 | convert_os_path | String | $PATH | Option string to override the $PATH variable used on the target node |
-| convert_async_timeout_maximum   | Int | 7200                  | Variable used to set the asynchronous task timeout value (in seconds)
-| convert_async_poll_interval     | Int | 60                    | Variable used to set the asynchronous task polling internal value (in seconds)
+| convert_async_timeout_maximum   | Int | 7200                  | Variable used to set the asynchronous task timeout value (in seconds) |
+| convert_async_poll_interval     | Int | 60                    | Variable used to set the asynchronous task polling internal value (in seconds) |
+| convert_no_rhsm | Boolean | false |  Set to true to pass --no-rhsm to convert2rhel. User must configure /etc/yum.repos.d RHEL repo file with repo disabled and specify analysis_convert2rhel_repos_enabled. |
 
 ## Red Hat Subscription Manager (RHSM) variables
 
-RHSM credentials provide a method to identify content views available from Red Hat Subscription Manager (RHSM). Use these variables to specify the RHSM credentials for the required content views.
+RHSM credentials provide a method to identify content views available from Red Hat Subscription Manager (RHSM). Use these variables to specify the RHSM credentials for the required content views. Alternatively, systems may be pre-registered to RHSM and these can be set to empty strings ("").
 
 | Name                  | Type | Default value           | Description                                     |
 |-----------------------|------|-------------------------|-------------------------------------------------|

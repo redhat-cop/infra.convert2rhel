@@ -1,12 +1,12 @@
 ---
 - name: Set repofile for EL 7
   ansible.builtin.set_fact:
-    convert2rhel_repofile_url: "https://cdn-public.redhat.com/content/public/addon/dist/convert2rhel/server/7/7Server/x86_64/files/repofile.repo"
+    convert2rhel_repofile_url: "{{ common_convert2rhel_7_repofile_url }}"
   when: ansible_distribution_major_version | int == 7
 
 - name: Set repofile for EL 8
   ansible.builtin.set_fact:
-    convert2rhel_repofile_url: "https://cdn-public.redhat.com/content/public/addon/dist/convert2rhel8/8/x86_64/files/repofile.repo"
+    convert2rhel_repofile_url: "{{ common_convert2rhel_8_repofile_url }}"
   when: ansible_distribution_major_version | int == 8
 
 - name: Display repofile url set
