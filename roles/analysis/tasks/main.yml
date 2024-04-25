@@ -15,7 +15,7 @@
 - name: Capture current ansible_facts for validation after analysis
   ansible.builtin.copy:
     content: "{{ ansible_facts | ansible.builtin.combine({'ansible_local': {}}) }}"
-    dest: /etc/ansible/facts.d/pre_ripu.fact
+    dest: /etc/ansible/facts.d/pre_convert2rhel.fact
     mode: "0644"
     owner: root
     group: root
