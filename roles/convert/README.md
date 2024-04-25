@@ -19,6 +19,10 @@ Role Variables
 | convert_async_poll_interval     | Int | 60                    | Variable used to set the asynchronous task polling internal value (in seconds) |
 | convert_reboot_timeout | Int | 900 | Variable used for reboot task reboot_timeout (in seconds) |
 | convert_no_rhsm | Boolean | false |  Set to true to pass --no-rhsm to convert2rhel. User must configure /etc/yum.repos.d RHEL repo file with repo disabled and specify analysis_convert2rhel_repos_enabled. |
+| convert_reboot_requested | Boolean | false | Perform a reboot after conversion. |
+| convert_gpg_key_remove | Boolean | false | Remove the convert2rhel GPG key after conversion. |
+| convert_convert2rhel_repo_remove | Boolean | true | Remove the convert2rhel repo file after conversion. |
+| convert_convert2rhel_package_remove | Boolean | true | Remove the convert2rhel package after conversion. |
 
 ## Red Hat Subscription Manager (RHSM) variables
 

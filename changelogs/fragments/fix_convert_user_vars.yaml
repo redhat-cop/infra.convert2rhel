@@ -1,0 +1,4 @@
+---
+minor_changes:
+  - Move convert role vars which users may want to interact with from vars to defaults to make them easier to override.
+...

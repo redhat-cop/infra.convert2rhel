@@ -14,4 +14,9 @@ convert_async_poll_interval: 60
 convert_reboot_timeout: 900
 
 convert_no_rhsm: false
+convert_reboot_requested: false
+
+convert_gpg_key_remove: false
+convert_convert2rhel_repo_remove: true
+convert_convert2rhel_package_remove: true
 ...
