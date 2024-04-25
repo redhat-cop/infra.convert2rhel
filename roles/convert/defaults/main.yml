@@ -11,6 +11,7 @@ convert_os_path: $PATH
 
 convert_async_timeout_maximum: 7200
 convert_async_poll_interval: 60
+convert_reboot_timeout: 900
 
 convert_no_rhsm: false
 ...
