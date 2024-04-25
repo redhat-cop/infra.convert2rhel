@@ -39,8 +39,8 @@
 - name: Reboot if requested
   ansible.builtin.reboot:
     msg: "Host is starting Convert2RHEL!"
-    reboot_timeout: 120
-  timeout: 180
+    reboot_timeout: "{{ convert_reboot_timeout | int }}"
+  timeout: "{{ convert_reboot_timeout | int + 60 }}"
   when: convert_reboot_requested
 
 - name: Remove Convert2RHEL
