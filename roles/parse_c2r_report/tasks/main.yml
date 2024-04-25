@@ -25,7 +25,7 @@
     - item in inhibitors_statuses
   loop: "{{ report_message_levels.values() | unique }}"
   vars:
-    # All of these are unnaceptable based on https://github.com/oamg/convert2rhel-worker-scripts/blob/main/scripts/preconversion_assessment_script.py#L121
+    # All of these are unacceptable based on https://github.com/oamg/convert2rhel-worker-scripts/blob/main/scripts/preconversion_assessment_script.py#L121
     inhibitors_statuses:
       - "SKIP"
       - "OVERRIDABLE"
