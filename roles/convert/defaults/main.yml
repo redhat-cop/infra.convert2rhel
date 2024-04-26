@@ -2,6 +2,7 @@
 # defaults file for convert
 
 convert_convert2rhel_opts: ""
+convert_convert2rhel_env_vars: ""
 # If you are converting to RHEL 8.8 and have an Extended Upgrade Support (EUS), add the --eus option by setting this variable to true.
 convert_convert2rhel_eus: false
 convert_convert2rhel_repos_enabled: []
