@@ -1,3 +1,14 @@
 ---
 # handlers file for convert
+# Keep this last so it's easy to find in the job output.
+- name: Display conversion inhibitors
+  ansible.builtin.debug:
+    var: convert2rhel_inhibitors_txt.stdout_lines
+  when: conversion_inhibited
+  listen: Display Conversion Status
+
+# Moving this to here so it is displayed last.
+- name: Display Conversion Status
+  ansible.builtin.debug:
+    msg: "Conversion was {{ 'inhibited!' if conversion_inhibited else 'successful.' }}"
 ...

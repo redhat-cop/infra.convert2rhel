@@ -31,4 +31,15 @@
       - "OVERRIDABLE"
       - "ERROR"
     report_message_levels: "{{ lookup('ansible.utils.to_paths', convert2rhel_report_json) | dict2items | selectattr('key', 'search', 'level') | items2dict }}"
+
+- name: Collect human readable inhibitors
+  ansible.builtin.shell:
+    cmd: >-
+      set -o pipefail;
+      cat {{ parse_c2r_report_result_filename_txt }} |
+      sed -e 's/\x1b\[[0-9;]*m//g' |
+      awk '/\((ERROR|SKIP|OVERRIDABLE)\)/,/^$/'
+  register: convert2rhel_inhibitors_txt
+  changed_when: false
+  when: conversion_inhibited
 ...
