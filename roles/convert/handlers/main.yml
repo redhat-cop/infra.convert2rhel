@@ -5,10 +5,10 @@
   ansible.builtin.debug:
     var: convert2rhel_inhibitors_txt.stdout_lines
   when: conversion_inhibited
-  listen: Display Conversion Status
+  listen: Display conversion status
 
 # Moving this to here so it is displayed last.
-- name: Display Conversion Status
+- name: Display conversion status
   ansible.builtin.debug:
     msg: "Conversion was {{ 'inhibited!' if conversion_inhibited else 'successful.' }}"
 ...

@@ -42,10 +42,10 @@
 - name: Remove Convert2RHEL
   ansible.builtin.include_tasks: remove-c2r.yml
 
-- name: Notify Display Conversion Status
+- name: Notify display conversion status
   ansible.builtin.assert:
     that: true
     quiet: true
   changed_when: true
-  notify: Display Conversion Status
+  notify: Display conversion status
 ...
