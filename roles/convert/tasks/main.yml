@@ -32,10 +32,6 @@
   ansible.builtin.include_role:
     name: infra.convert2rhel.parse_c2r_report
 
-- name: Display Conversion Status
-  ansible.builtin.debug:
-    msg: "Conversion was {{ 'inhibited' if conversion_inhibited else 'successful' }}"
-
 - name: Reboot if requested
   ansible.builtin.reboot:
     msg: "Host is starting Convert2RHEL!"
@@ -45,4 +41,11 @@
 
 - name: Remove Convert2RHEL
   ansible.builtin.include_tasks: remove-c2r.yml
+
+- name: Notify display conversion status
+  ansible.builtin.assert:
+    that: true
+    quiet: true
+  changed_when: true
+  notify: Display conversion status
 ...
