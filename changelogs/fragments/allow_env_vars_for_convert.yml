@@ -1,0 +1,4 @@
+---
+minor_changes:
+  - Add convert_convert2rhel_env_vars variable to pass environment variables to convert2rhel during convert.
+...

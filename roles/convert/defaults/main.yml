@@ -2,6 +2,11 @@
 # defaults file for convert
 
 convert_convert2rhel_opts: ""
+convert_convert2rhel_env_vars: {}
+# convert_convert2rhel_env_vars:
+#   CONVERT2RHEL_ALLOW_UNAVAILABLE_KMODS: 1
+#   CONVERT2RHEL_SKIP_KERNEL_CURRENCY_CHECK: 1
+
 # If you are converting to RHEL 8.8 and have an Extended Upgrade Support (EUS), add the --eus option by setting this variable to true.
 convert_convert2rhel_eus: false
 convert_convert2rhel_repos_enabled: []
