@@ -11,7 +11,7 @@ Role Variables
 | Name                  | Type | Default value           | Description                                     |
 |-----------------------|------|-------------------------|-------------------------------------------------|
 | convert_convert2rhel_opts | String | | Optional string to define command line options to be passed to the `convert2rhel` command when running the conversion. |
-| convert_convert2rhel_env_vars | String | | Optional string to define shell environment variables for the `convert2rhel` command when running the conversion. For example "CONVERT2RHEL_ALLOW_UNAVAILABLE_KMODS=1". Multiple env vars can be provided space separated. |
+| convert_convert2rhel_env_vars | Dict | {} | Optional dictionary to define shell environment variables for the `convert2rhel` command when running the conversion. See defaults/main.yml for an example. |
 | convert_convert2rhel_eus | Boolean | false | If you are converting to RHEL 8.8 and have an Extended Upgrade Support (EUS), add the --eus option by setting this variable to true. |
 | convert_convert2rhel_repos_enabled | List | [] | List of repositories to enable on the target node |
 | convert_convert2rhel_repos_disabled | List | [] | List of repositories to disable on the target node |

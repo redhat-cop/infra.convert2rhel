@@ -6,7 +6,7 @@
 
 - name: Convert2RHEL convert
   ansible.builtin.shell: >
-    export PATH={{ convert_os_path }} {{ convert_convert2rhel_env_vars }};
+    export PATH={{ convert_os_path }};
     set -o pipefail;
     convert2rhel convert -y
     {{ convert_convert2rhel_opts }}
@@ -23,6 +23,7 @@
   register: convert2rhel
   args:
     executable: /bin/bash
+  environment: "{{ convert_convert2rhel_env_vars }}"
   async: "{{ convert_async_timeout_maximum | int }}"
   poll: "{{ convert_async_poll_interval | int }}"
   changed_when: convert2rhel.rc != 0
