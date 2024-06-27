@@ -25,7 +25,8 @@
       loop: "{{ common_centos8_repos }}"
       when: ansible_distribution == 'CentOS' and ansible_distribution_major_version | int == 8
 
-- name: Setup & Install Convert2RHEL
+- name: Setup Convert2RHEL repository
+  when: not common_convert2rhel_repo_satellite
   block:
     - name: Download Red Hat GPG key
       ansible.builtin.get_url:
@@ -42,9 +43,10 @@
         dest: "/etc/yum.repos.d/convert2rhel.repo"
         mode: '0644'
 
-    - name: Install Convert2RHEL
-      ansible.builtin.yum:
-        name: convert2rhel
+- name: Install Convert2RHEL
+  ansible.builtin.yum:
+    name: convert2rhel
+    enablerepo: "{{ common_yum_enable_repos | default(omit) }}"
 
 - name: Create temporary configuration file
   ansible.builtin.tempfile:
@@ -57,4 +59,5 @@
     src: configfile.j2
     dest: "{{ convert2rhel_configfile.path }}"
     mode: '0600'
+  when: not common_convert2rhel_repo_satellite
 ...
