@@ -44,7 +44,7 @@
         mode: '0644'
 
 - name: Install Convert2RHEL
-  ansible.builtin.yum:
+  ansible.builtin.package:
     name: convert2rhel
     enablerepo: "{{ common_yum_enable_repos | default(omit) }}"
 
