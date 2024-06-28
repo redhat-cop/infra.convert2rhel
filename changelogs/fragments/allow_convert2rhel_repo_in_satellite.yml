@@ -1,0 +1,6 @@
+---
+minor_changes:
+  - Add support for hosting convert2rhel repo in Satellite.
+  - Add option to specify enablerepo parameter to yum when installing convert2rhel package.
+
+...

@@ -16,6 +16,8 @@ Following variables are recommended to **NOT** be changed.
 | common_convert2rhel_repokey_url | String | https://www.redhat.com/security/data/fd431d51.txt | Can be used to override where to get the GPG Key for the convert2rhel repository. |
 | common_convert2rhel_7_repofile_url | String | https://cdn-public.redhat.com/content/public/addon/dist/convert2rhel/server/7/7Server/x86_64/files/repofile.repo | Can be used to override where to get the RHEL 7 convert2rhel repo file. |
 | common_convert2rhel_8_repofile_url | String | https://cdn-public.redhat.com/content/public/addon/dist/convert2rhel8/8/x86_64/files/repofile.repo | Can be used to override where to get the RHEL 8 convert2rhel repo file. |
+| common_convert2rhel_repo_satellite | boolean | false | Set to true if the convert2rhel repo is served from Satellite. |
+| common_yum_enable_repos | list of strings | unset | Optionally pass a list of repositories to enable to yum install convert2rhel. |
 
 Dependencies
 ------------
