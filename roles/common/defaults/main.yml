@@ -1,6 +1,16 @@
 ---
 # defaults file for common
 
+common_centos7_repos:
+  - CentOS-Base.repo
+  - CentOS-CR.repo
+  - CentOS-Debuginfo.repo
+  - CentOS-fasttrack.repo
+  - CentOS-Media.repo
+  - CentOS-Sources.repo
+  - CentOS-Vault.repo
+  - CentOS-x86_64-kernel.repo
+
 common_centos8_repos:
   - CentOS-Linux-AppStream.repo
   - CentOS-Linux-BaseOS.repo
