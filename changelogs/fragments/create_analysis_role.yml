@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Create an analysis role to have all tasks associated with the analysis operation performed by convert2rhel. This role should be used whenever the playbook is meant to be used solely to perfom analysis of the system.
-...

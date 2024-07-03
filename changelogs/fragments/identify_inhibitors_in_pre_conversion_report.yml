@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Parse the pre-conversion report and identify if there is any inhibitors in the output, if so, inhibit the analysis/conversion with a message to the user, otherwise, report it was successful.
-...

@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Save facts pre-conversion to pre_convert2rhel instead of pre_ripu so both can be available in the event of convert2rhel -> ripu.
-...

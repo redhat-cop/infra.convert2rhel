@@ -3,7 +3,7 @@
 
 namespace: infra
 name: convert2rhel
-version: "1.1.0"
+version: 1.2.1
 readme: README.md
 authors:
   - Rodolfo Olivieri (github.com/r0x0d)

@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Add handler to remove config file after the end of the conversion, cleaning up any leftovers on the system placed by the collection.
-...

@@ -1,4 +1,0 @@
----
-bugfixes:
-  - semi-colon needed to separate export cmd from set cmd in ansible.builtin.shell task
-...
