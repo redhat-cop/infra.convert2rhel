@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Convert2RHEL now has a public CDN updated with the latest releases. This commit updates the URL reference to use the public CDN instead of the FTP one.
-...

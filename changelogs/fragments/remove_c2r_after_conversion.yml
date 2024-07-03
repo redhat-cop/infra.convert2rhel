@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Remove convert2rhel after the conversion is done to not leave leftovers in the system.
-...

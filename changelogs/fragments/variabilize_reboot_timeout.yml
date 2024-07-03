@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Variabilize reboot timeout (convert_reboot_timeout) such that user can override.
-...

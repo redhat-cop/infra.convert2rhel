@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Collect human readable inhibitors and include in job output near the end for easy review.
-...

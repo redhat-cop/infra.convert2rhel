@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Convert2RHEL has a –eus command line switch to enable EUS conversions on systems that are 8.8+. If we are targeting a system that is on 8.6, we will assume directly that it is an EUS conversion.  We will probably need a variable to let the user specify that they want to use –eus.
-...

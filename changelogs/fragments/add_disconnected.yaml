@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Add support for disconnected servers both with and without RHSM.
-...

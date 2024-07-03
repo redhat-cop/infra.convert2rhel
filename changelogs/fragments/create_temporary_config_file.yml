@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Add a temporary config file to store the RHSM secrets during the analysis and conversion roles execution.
-...

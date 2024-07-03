@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Add option to let the user set which repositories they want to enable or disable during the analysis and conversion.
-...

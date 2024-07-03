@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Add check to verify that the conversion finished properly based on the convert2rhel report parsing.
-...

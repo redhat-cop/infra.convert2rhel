@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Add a common role that is meant to be used by any other roles in this collection, as it has common task that should be used by analysis or conversion roles.
-...
