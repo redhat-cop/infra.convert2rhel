@@ -1,7 +1,8 @@
 # Ansible Convert2RHEL Collection
 
-[![CI](https://github.com/redhat-cop/infra.convert2rhel/workflows/CI/badge.svg?event=push)](https://github.com/redhat-cop/infra.convert2rhel/actions)
-[![Lint](https://github.com/redhat-cop/infra.convert2rhel/workflows/Yaml%20and%20Ansible%20Lint/badge.svg?event=push)](https://github.com/redhat-cop/infra.convert2rhel/actions)
+[![CI](https://github.com/redhat-cop/infra.convert2rhel/actions/workflows/ansible-test.yml/badge.svg)](https://github.com/redhat-cop/infra.convert2rhel/actions/workflows/ansible-test.yml)
+[![Yaml and Ansible Lint](https://github.com/redhat-cop/infra.convert2rhel/actions/workflows/ansible-lint.yml/badge.svg)](https://github.com/redhat-cop/infra.convert2rhel/actions/workflows/ansible-lint.yml)
+[![Release](https://github.com/redhat-cop/infra.convert2rhel/actions/workflows/release.yml/badge.svg?event=release)](https://github.com/redhat-cop/infra.convert2rhel/actions/workflows/release.yml)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8649/badge)](https://www.bestpractices.dev/projects/8649)
 
 <!-- [![Codecov](https://img.shields.io/codecov/c/github/redhat-cop/infra.convert2rhel)](https://codecov.io/gh/redhat-cop/infra.convert2rhel) -->
