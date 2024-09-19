@@ -23,11 +23,11 @@
   changed_when: "'Pre-conversion analysis report' not in convert2rhel.stdout"
   notify: Remove temporary configuration file
 
-- name: Include check-results-file.yml
-  ansible.builtin.include_tasks: check-results-file.yml
+- name: Set the activity
+  ansible.builtin.set_fact:
+    activity: "analysis"
 
-- name: Include the parse_c2r_report role to check if conversion inhibited
+- name: Include the handle_report to check if report available and if conversion inhibited
   ansible.builtin.include_role:
-    name: infra.convert2rhel.parse_c2r_report
-
+    name: infra.convert2rhel.handle_c2r_report
 ...

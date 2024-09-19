@@ -27,11 +27,19 @@
   async: "{{ convert_async_timeout_maximum | int }}"
   poll: "{{ convert_async_poll_interval | int }}"
   changed_when: convert2rhel.rc != 0
+  # When ihibitor is found the return code is 2. This will cause a fail and the report parsing will be skipped
+  # which is unsolicited. This is different from `convert2rhel analyze` where the exit code is 0 if inhibitor
+  # is found. This is a bug and is tracked under RHELC-1736
+  failed_when: convert2rhel.rc != 0 and convert2rhel.rc != 2
   notify: Remove temporary configuration file
 
-- name: Include the parse_c2r_report role to check if conversion inhibited
+- name: Set the activity for correct handling of the report
+  ansible.builtin.set_fact:
+    activity: "convert"
+
+- name: Include the handle_c2r_report role to check if conversion inhibited
   ansible.builtin.include_role:
-    name: infra.convert2rhel.parse_c2r_report
+    name: infra.convert2rhel.handle_c2r_report
 
 - name: Reboot if requested
   ansible.builtin.reboot:

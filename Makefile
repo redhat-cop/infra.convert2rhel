@@ -9,6 +9,10 @@ ANSIBLE_COLLECTIONS_PATH=
 PYTHON = python3
 PYTHON_VENV = .venv
 
+create-folder-for-test:
+	mkdir -p ansible_collections/infra/convert2rhel/
+	cp -r playbooks plugins roles meta galaxy.yml ansible_collections/infra/convert2rhel/
+
 install-deps:
 	virtualenv -p '$(PYTHON)' $(PYTHON_VENV); \
 	. $(PYTHON_VENV)/bin/activate; \

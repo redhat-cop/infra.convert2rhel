@@ -1,5 +1,6 @@
 /tests/output/
 /changelogs/.plugin-cache.yaml
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -136,3 +137,7 @@ pre-commit
 
 # Ignore ansible.cfg
 ansible.cfg
+
+# Igone helper folder and file for testing
+ansible_collections/
+hosts
