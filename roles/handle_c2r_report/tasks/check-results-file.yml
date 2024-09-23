@@ -1,0 +1,16 @@
+---
+- name: Result file status
+  ansible.builtin.stat:
+    path: "{{ handle_c2r_report_result_filename_txt }}"
+  register: result
+- name: Print the value of a variable with message
+  ansible.builtin.debug:
+    msg: "The value of my_variable is: {{ handle_c2r_report_result_filename_txt }}"
+- name: Set variable
+  ansible.builtin.set_fact:
+    result_file_exists: result.stat.exists
+- name: Check that result file exists
+  ansible.builtin.assert:
+    that: result.stat.exists
+    msg: "The report file {{ handle_c2r_report_result_filename_txt }} was not created."
+...

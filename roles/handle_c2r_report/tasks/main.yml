@@ -1,0 +1,45 @@
+---
+- name: Handle analysis report
+  when: activity == "analysis"
+  block:
+    - name: Set needed filepath
+      ansible.builtin.set_fact:
+        handle_c2r_report_result_filename_txt: "{{ handle_c2r_report_analysis_result_filename_txt }}"
+        handle_c2r_report_result_filename_json: "{{ handle_c2r_report_analysis_result_filename_json }}"
+    - name: Include check-results-file.yml
+      ansible.builtin.include_tasks: check-results-file.yml
+    - name: Include the parse-c2r-report.yml task to check if conversion inhibited
+      ansible.builtin.include_tasks: parse-c2r-report.yml
+
+- name: Handle convert report
+  when: activity == "convert"
+  block:
+    - name: Check if post-conversion report is available
+      ansible.builtin.stat:
+        path: "{{ handle_c2r_report_convert_result_filename_txt }}"
+      register: post_conversion_file
+    - name: Handle the post-conversion report exists situation
+      when: post_conversion_file.stat.exists
+      block:
+        - name: Set filepath to post-conversion report
+          ansible.builtin.set_fact:
+            handle_c2r_report_result_filename_txt: "{{ handle_c2r_report_convert_result_filename_txt }}"
+            handle_c2r_report_result_filename_json: "{{ handle_c2r_report_convert_result_filename_json }}"
+        - name: Include check-results-file.yml
+          ansible.builtin.include_tasks: check-results-file.yml
+        - name: Handle conversion report
+          ansible.builtin.include_tasks: parse-c2r-report.yml
+    - name: Handle the post-conversion report doesn't exist situation
+      when: not post_conversion_file.stat.exists
+      block:
+        # When the post-conversion report isn't available, the pre-conversion report is
+        # Conversion probably failed in analysis step
+        - name: Set filepath to pre-conversion report
+          ansible.builtin.set_fact:
+            handle_c2r_report_result_filename_txt: "{{ handle_c2r_report_analysis_result_filename_txt }}"
+            handle_c2r_report_result_filename_json: "{{ handle_c2r_report_analysis_result_filename_json }}"
+        - name: Include check-results-file.yml
+          ansible.builtin.include_tasks: check-results-file.yml
+        - name: Handle analysis report
+          ansible.builtin.include_tasks: parse-c2r-report.yml
+...

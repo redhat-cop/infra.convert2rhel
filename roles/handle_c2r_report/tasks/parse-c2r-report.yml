@@ -5,12 +5,12 @@
 
 - name: Collect human readable report results
   ansible.builtin.slurp:
-    src: "{{ parse_c2r_report_result_filename_txt }}"
+    src: "{{ handle_c2r_report_result_filename_txt }}"
   register: results_txt
 
 - name: Collect JSON report results
   ansible.builtin.slurp:
-    src: "{{ parse_c2r_report_result_filename_json }}"
+    src: "{{ handle_c2r_report_result_filename_json }}"
   register: results_json
 
 - name: Parse report results
@@ -36,7 +36,7 @@
   ansible.builtin.shell:
     cmd: >-
       set -o pipefail;
-      cat {{ parse_c2r_report_result_filename_txt }} |
+      cat {{ handle_c2r_report_result_filename_txt }} |
       sed -e 's/\x1b\[[0-9;]*m//g' |
       awk '/\((ERROR|SKIP|OVERRIDABLE)\)/,/^$/'
   register: convert2rhel_inhibitors_txt

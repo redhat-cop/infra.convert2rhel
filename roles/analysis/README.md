@@ -33,7 +33,7 @@ RHSM credentials provide a method to identify content views available from Red H
 Dependencies
 ------------
 
-This role is dependent on the `common` role and `parse_c2r_report` role.
+This role is dependent on the `common` role and `handle_c2r_report` role.
 
 Example Playbook
 ----------------

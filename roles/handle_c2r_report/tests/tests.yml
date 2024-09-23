@@ -1,7 +1,7 @@
 ---
-- name: Test parse_c2r_report
+- name: Test handle_c2r_report
   hosts: localhost
   remote_user: root
   roles:
-    - parse_c2r_report
+    - handle_c2r_report
 ...

@@ -1,0 +1,11 @@
+---
+# defaults file for handle_c2r_report
+
+handle_c2r_report_analysis_result_filename_prefix: /var/log/convert2rhel/convert2rhel-pre-conversion
+handle_c2r_report_analysis_result_filename_txt: "{{ handle_c2r_report_analysis_result_filename_prefix }}.txt"
+handle_c2r_report_analysis_result_filename_json: "{{ handle_c2r_report_analysis_result_filename_prefix }}.json"
+
+handle_c2r_report_convert_result_filename_prefix: /var/log/convert2rhel/convert2rhel-post-conversion
+handle_c2r_report_convert_result_filename_txt: "{{ handle_c2r_report_convert_result_filename_prefix }}.txt"
+handle_c2r_report_convert_result_filename_json: "{{ handle_c2r_report_convert_result_filename_prefix }}.json"
+...
